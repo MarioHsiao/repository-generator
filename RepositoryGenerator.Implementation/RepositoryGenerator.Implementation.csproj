@@ -1,0 +1,26 @@
+﻿<Project>
+
+  <PropertyGroup>
+
+    <UsingToolVsSDK>true</UsingToolVsSDK>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+    <CreateVsixContainer>false</CreateVsixContainer>
+    
+    <RootNamespace>Microsoft.VisualStudio.RepositoryGenerator</RootNamespace>
+    <AssemblyName>Microsoft.VisualStudio.RepositoryGenerator.Implementation</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+
+  <ItemGroup>
+    <Compile Include="..\Shared\Package.cs" Link="Package.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\RepositoryGenerator.Abstractions\RepositoryGenerator.Abstractions.csproj" />
+    <ProjectReference Include="..\RepositoryGenerator.Logging\RepositoryGenerator.Logging.csproj" />
+  </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+</Project>
