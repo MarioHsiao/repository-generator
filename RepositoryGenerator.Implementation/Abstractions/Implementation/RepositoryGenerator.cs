@@ -28,7 +28,8 @@ namespace Microsoft.VisualStudio.RepositoryGenerator.Abstractions.Implementation
 
         public async Task CreateRepositoryAsync(IRepositoryGeneratorParameters parameters, CancellationToken cancellationToken = default)
         {
-            string zipFilePath = Path.Combine(parameters.Output, "arcade.zip");
+            string zipFileName = Guid.NewGuid().ToString("N");
+            string zipFilePath = Path.Combine(parameters.Output, $"{zipFileName}.zip");
             string targetDirectory = Path.Combine(parameters.Output, parameters.RepositoryName);
             string solutionFilePath = Path.Combine(targetDirectory, $"{parameters.SolutionName}.sln");
 

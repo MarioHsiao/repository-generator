@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using System;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.IO.Compression;
@@ -23,8 +24,10 @@ namespace Microsoft.VisualStudio.RepositoryGenerator.Abstractions.Implementation
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
+            string tempGuid = Guid.NewGuid().ToString("N");
+
             string tempZipDir =
-                Path.Combine(Path.GetDirectoryName(zipFile), Path.GetFileNameWithoutExtension(zipFile));
+                Path.Combine(Path.GetDirectoryName(zipFile), tempGuid);
 
             await Logger.LogAsync($"Unzipping file {zipFile} to directory {outputDirectory}");
 
@@ -36,7 +39,7 @@ namespace Microsoft.VisualStudio.RepositoryGenerator.Abstractions.Implementation
             {
                 _fileHelper.CopyDirectory(firstDirectory, outputDirectory, true, true);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 await Logger.LogAsync(ex.Message);
             }

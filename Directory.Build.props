@@ -3,6 +3,8 @@
 
   <PropertyGroup>
 
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+
     <Deterministic>true</Deterministic>
     
     <MinimumVisualStudioVersion>$(VisualStudioVersion)</MinimumVisualStudioVersion>
